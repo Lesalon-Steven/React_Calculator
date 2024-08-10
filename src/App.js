@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from "./components/Button";
+import Input from "./components/Input";
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+var numbers = [0,1,2,3,4,5,6,7,8,9, "+","-","/","*", "=", "C"];
+
+const dataEntered = document.getElementById("display")
+
+function AppendtoDisplay(sign){
+dataEntered.value += sign;
 }
+
+
+function displayData(){
+  return numbers;
+}
+
+function App(){
+
+  const data = displayData();
+  return (
+  <div className="calculator">
+    <Input/>
+
+   <div className="container">
+   
+   {data.map((number, index)=>(<Button key={index} sign= {number}/>))}
+   </div>
+  </div>
+  
+);
+  
+};
 
 export default App;
